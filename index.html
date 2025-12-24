@@ -5,336 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashlem | Thoughts Archive</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background-color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        header {
-            margin-bottom: 3rem;
-        }
-
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .site-subtitle {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        nav {
-            margin: 2rem 0 3rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 0.25rem 0;
-        }
-
-        .nav-links a:hover {
-            color: #000;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .essay-list {
-            list-style: none;
-        }
-
-        .essay-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .essay-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .essay-title a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .essay-title a:hover {
-            text-decoration: underline;
-        }
-
-        .essay-excerpt {
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .essay-meta {
-            display: flex;
-            gap: 1rem;
-            color: #888;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tag {
-            display: inline-block;
-            background-color: #f5f5f5;
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Style pour les instructions */
-        .instruction {
-            background-color: #f0f8ff;
-            border-left: 4px solid #4a90e2;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-
-        .instruction h3 {
-            color: #2c5282;
-            margin-bottom: 0.5rem;
-        }
-
-        .instruction code {
-            background-color: #e6f7ff;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .example-box {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        .space-for-content {
-            background-color: #fff8e6;
-            border: 2px dashed #ffcc00;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+        
+        /* Structure simple */
+        .article { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #eee; }
+        .article h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .article p { color: #666; margin-bottom: 0.5rem; }
+        .meta { color: #888; font-size: 0.9rem; }
+        .tags span { background: #f0f0f0; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; margin-right: 0.3rem; }
+        
+        /* Zone pour créer les articles */
+        .create-zone {
+            background: #f8f8f8;
+            border: 2px dashed #ccc;
             padding: 2rem;
             margin: 2rem 0;
             text-align: center;
-            color: #cc6600;
-            border-radius: 8px;
         }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
+        .create-zone h3 { color: #333; margin-bottom: 1rem; }
+        .code-block {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="site-title">Dashlem</h1>
-            <p class="site-subtitle">Thoughts, essays, and insights</p>
-            
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#essays">Essays</a></li>
-                    <li><a href="#archive">Archive</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- INSTRUCTION GÉNÉRALE -->
-        <div class="instruction">
-            <h3>📝 COMMENT CRÉER VOS ARTICLES</h3>
-            <p>1. Copiez la structure HTML ci-dessous pour chaque nouvel article</p>
-            <p>2. Collez-la dans la section "ESPACE POUR VOS ARTICLES"</p>
-            <p>3. Remplissez les éléments entre [ ] avec votre contenu</p>
-        </div>
-
-        <!-- STRUCTURE D'UN ARTICLE (À COPIER) -->
-        <div class="example-box">
-            <h3>📋 STRUCTURE À COPIER POUR UN ARTICLE :</h3>
-            <pre><code>&lt;li class="essay-item"&gt;
-  &lt;h3 class="essay-title"&gt;&lt;a href="#"&gt;[TITRE DE VOTRE ARTICLE]&lt;/a&gt;&lt;/h3&gt;
-  &lt;p class="essay-excerpt"&gt;[DESCRIPTION COURTE - 1 à 3 phrases]&lt;/p&gt;
-  &lt;div class="essay-meta"&gt;
-    &lt;span&gt;[TEMPS DE LECTURE]&lt;/span&gt;
-    &lt;span&gt;•&lt;/span&gt;
-    &lt;span&gt;[DATE]&lt;/span&gt;
+    
+    <!-- TITRE DU SITE -->
+    <h1 style="margin-bottom: 0.5rem;">Dashlem</h1>
+    <p style="color: #666; margin-bottom: 2rem;">Archive de pensées</p>
+    
+    <!-- UNE SEULE INSTRUCTION CLAIRE -->
+    <div class="create-zone">
+        <h3>🛠️ COMMENT CRÉER UN ARTICLE :</h3>
+        <p>1. Copiez ce code :</p>
+        
+        <div class="code-block">
+&lt;div class="article"&gt;
+  &lt;h2&gt;[METTEZ VOTRE TITRE ICI]&lt;/h2&gt;
+  &lt;p&gt;[METTEZ VOTRE DESCRIPTION ICI]&lt;/p&gt;
+  &lt;div class="meta"&gt;[DATE] • [TEMPS DE LECTURE]&lt;/div&gt;
+  &lt;div class="tags"&gt;
+    &lt;span&gt;[TAG1]&lt;/span&gt;
+    &lt;span&gt;[TAG2]&lt;/span&gt;
+    &lt;span&gt;[TAG3]&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div&gt;
-    &lt;span class="tag"&gt;[TAG 1]&lt;/span&gt;
-    &lt;span class="tag"&gt;[TAG 2]&lt;/span&gt;
-    &lt;span class="tag"&gt;[TAG 3]&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/li&gt;</code></pre>
+&lt;/div&gt;
         </div>
-
-        <!-- EXEMPLE D'ARTICLE RÉUSSI -->
-        <div class="example-box">
-            <h3>✅ EXEMPLE D'ARTICLE REMPLI :</h3>
-            <li class="essay-item">
-                <h3 class="essay-title"><a href="#">Comment Apprendre N'importe Quel Sujet</a></h3>
-                <p class="essay-excerpt">Une méthode simple pour maîtriser de nouvelles compétences rapidement en utilisant les principes de l'apprentissage en profondeur et de la pratique délibérée.</p>
-                <div class="essay-meta">
-                    <span>8 min read</span>
-                    <span>•</span>
-                    <span>Mars 2024</span>
-                </div>
-                <div>
-                    <span class="tag">Apprentissage</span>
-                    <span class="tag">Productivité</span>
-                    <span class="tag">Éducation</span>
-                </div>
-            </li>
-        </div>
-
-        <!-- SECTION PRINCIPALE POUR VOS ARTICLES -->
-        <div class="space-for-content">
-            <h3>👇 ESPACE POUR VOS ARTICLES 👇</h3>
-            <p>Copiez-collez la structure ci-dessus ici et remplissez-la</p>
-        </div>
-
-        <section id="home">
-            <h2 class="section-title">Derniers Articles</h2>
-            <ul class="essay-list">
-                <!-- VOTRE PREMIER ARTICLE ICI -->
-                <div class="instruction">
-                    <h3>🎯 ARTICLE 1 : Commencez ici</h3>
-                    <p>Copiez la structure d'article et collez-la ci-dessous :</p>
-                </div>
-                
-                <!-- ESPACE POUR ARTICLE 1 -->
-                <!-- 
-                <li class="essay-item">
-                  <h3 class="essay-title"><a href="#">[VOTRE TITRE]</a></h3>
-                  <p class="essay-excerpt">[VOTRE DESCRIPTION]</p>
-                  <div class="essay-meta">
-                    <span>[5 min read]</span>
-                    <span>•</span>
-                    <span>[Mars 2024]</span>
-                  </div>
-                  <div>
-                    <span class="tag">[Philosophie]</span>
-                    <span class="tag">[Vie]</span>
-                    <span class="tag">[Réflexion]</span>
-                  </div>
-                </li>
-                -->
-                
-                <!-- ESPACE POUR ARTICLE 2 -->
-                <div class="instruction">
-                    <h3>🎯 ARTICLE 2 : Ajoutez votre deuxième article ici</h3>
-                </div>
-                
-                <!-- ESPACE POUR ARTICLE 3 -->
-                <div class="instruction">
-                    <h3>🎯 ARTICLE 3 : Ajoutez votre troisième article ici</h3>
-                </div>
-                
-                <!-- PLUS D'ESPACE POUR ARTICLES -->
-                <div class="space-for-content">
-                    <p>➕ AJOUTEZ PLUS D'ARTICLES ICI ➕</p>
-                    <p>Copiez-collez la structure pour chaque nouvel article</p>
-                </div>
-            </ul>
-        </section>
-
-        <!-- SECTION ARCHIVE -->
-        <section id="archive" style="margin-top: 4rem;">
-            <h2 class="section-title">Archive</h2>
-            <div class="instruction">
-                <h3>📁 POUR L'ARCHIVE :</h3>
-                <p>Créez une section par année et listez vos articles</p>
-                <p>Exemple :</p>
-                <pre><code>&lt;h3&gt;2024&lt;/h3&gt;
-&lt;ul class="essay-list"&gt;
-  [COLLEZ VOS ARTICLES DE 2024 ICI]
-&lt;/ul&gt;
-
-&lt;h3&gt;2023&lt;/h3&gt;
-&lt;ul class="essay-list"&gt;
-  [COLLEZ VOS ARTICLES DE 2023 ICI]
-&lt;/ul&gt;</code></pre>
-            </div>
-            
-            <!-- EXEMPLE D'ARCHIVE -->
-            <div class="example-box">
-                <h3>2024</h3>
-                <ul class="essay-list">
-                    <li class="essay-item">
-                        <h3 class="essay-title"><a href="#">Comment Apprendre N'importe Quel Sujet</a></h3>
-                        <div class="essay-meta">
-                            <span>Mars 2024</span>
-                            <span>•</span>
-                            <span>8 min read</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- ESPACE POUR VOTRE ARCHIVE -->
-            <div class="space-for-content">
-                <h3>📂 VOTRE ARCHIVE ICI</h3>
-                <p>Organisez vos articles par année</p>
-            </div>
-        </section>
-
-        <!-- INSTRUCTIONS FINALES -->
-        <div class="instruction" style="margin-top: 4rem; background-color: #f0fff0; border-left-color: #38a169;">
-            <h3>✅ RÉCAPITULATIF :</h3>
-            <p><strong>Étape 1 :</strong> Copiez la structure d'article (dans la boîte grise en haut)</p>
-            <p><strong>Étape 2 :</strong> Collez-la dans "ESPACE POUR VOS ARTICLES"</p>
-            <p><strong>Étape 3 :</strong> Remplacez les éléments entre [ ] par votre contenu</p>
-            <p><strong>Étape 4 :</strong> Répétez pour chaque nouvel article</p>
-            <p><strong>Étape 5 :</strong> Pour l'archive, regroupez les articles par année</p>
-        </div>
-
-        <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; color: #888;">
-            <p>© 2024 Dashlem. Tous droits réservés.</p>
-        </footer>
+        
+        <p>2. Collez-le ci-dessous ↓</p>
+        <p>3. Remplacez le texte entre [ ] par votre contenu</p>
     </div>
+    
+    <!-- ZONE UNIQUE POUR METTRE TOUS VOS ARTICLES -->
+    <!-- COLLEZ VOS ARTICLES ICI -->
+    
+    <!-- EXEMPLE POUR VOIR COMMENT ÇA RESSEMBLE -->
+    <div class="article">
+        <h2>Comment Apprendre Rapidement</h2>
+        <p>Une méthode simple pour maîtriser n'importe quel sujet en peu de temps.</p>
+        <div class="meta">Mars 2024 • 5 min de lecture</div>
+        <div class="tags">
+            <span>Apprentissage</span>
+            <span>Productivité</span>
+            <span>Éducation</span>
+        </div>
+    </div>
+    
+    <!-- ESPACE VIDE POUR VOS ARTICLES -->
+    <div style="height: 50px;"></div>
+    
+    <!-- RAPPEL SIMPLE -->
+    <div style="background: #f0f8ff; padding: 1rem; margin-top: 3rem; border-radius: 5px;">
+        <p><strong>Rappel :</strong> Copiez le code ci-dessus → Collez ici → Modifiez le texte entre [ ]</p>
+    </div>
+
 </body>
 </html>
